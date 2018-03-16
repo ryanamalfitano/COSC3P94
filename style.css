@@ -77,3 +77,35 @@ header nav > ul > li ul > li > span {
 .previews .preview.one { background-image: url(images/preview1.png); }
 .previews .preview.two { background-image: url(images/preview2.jpg); }
 .previews .preview.three { background-image: url(images/preview3.jpg); }
+
+#dialogBox {
+	display: block;
+	position: absolute;
+	top: 50%;
+		margin-top: -75px;
+	left: 50%;
+		margin-left: -150px;
+	
+	width: 300px;
+	height: 150px;
+	
+	text-align: center;
+}
+
+#dialogBox h1 {
+	margin: 0px 0px 5px;
+}
+
+#dialogBox p {
+	margin: 0px 0px 10px;
+}
+
+#dialogBox button {
+	
+}
+
+#dialogBox button#close {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+}
