@@ -36,6 +36,16 @@ function togglepreview(previewClass) {
 	}
 }
 
+function playpause() {
+	var playpause = document.getElementsByClassName("playpause");
+	
+	if (playpause[0].className == "playpause play") {
+		playpause[0].className = "playpause pause";
+	} else {
+		playpause[0].className = "playpause play";
+	}
+}
+
 (function() {
     document.onmousemove = handleMouseMove;
     function handleMouseMove(event) {

@@ -134,12 +134,19 @@ footer {
 footer button {
 	width: 30px;
 	height: 30px;
+	
+	background: url(images/play.png) center center no-repeat;
+	background-size: cover;
 }
 
-footer button img {
-	width: 30px;
-	height: 30px;
-}
+footer button.play        { background-image: url(images/play.png); }
+footer button.pause       { background-image: url(images/pause.png); }
+footer button.stop        { background-image: url(images/stop.png); }
+footer button.rewind      { background-image: url(images/rewind.png); }
+footer button.fastforward { background-image: url(images/fastforward.png); }
+footer button.start       { background-image: url(images/start.png); }
+footer button.end         { background-image: url(images/end.png); }
+footer span { display: inline-block; width: 30px; height: 30px; }
 
 #dialogBox {
 	display: none;
