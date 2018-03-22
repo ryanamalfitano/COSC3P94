@@ -109,9 +109,9 @@
 			</section>
 			
 			<section class="timeline">
-				<div class="track video"></div>
-				<div class="track audio"></div>
-				<div class="track audio"></div>
+				<div class="track video" oncontextmenu="trackoptions()">Video Track 1</div>
+				<div class="track audio" oncontextmenu="trackoptions()">Audio Track 1</div><!--
+				<div class="track audio" oncontextmenu="trackoptions()"></div>-->
 			</section>
 		</main>
 		
@@ -124,6 +124,10 @@
 		
 		<!-- Footer section: status bar. -->
 		<footer>
+			<section id="statusbar">
+				<!-- Buttons go here -->
+				<button><img src="images/play.png" alt="Play" /></button>
+			</section>
 			<script src="script.js"></script>
 		</footer>
 	</body>
