@@ -10,52 +10,53 @@
 			<nav>
 				<ul>
 					<li>File<ul>
-						<li onclick="popup('New Project','This is where the New Project options would go.')">New Project<span>Ctrl-N</span></li>
-						<li>Open Project...<span>Ctrl-O</span></li>
-						<li>Save Project As...<span>Ctrl-S</span></li>
+						<li onclick="popup('New Project','This is how a user will begin an entirely new project, prompting them to save their existing one if it has changes made')">New Project<span>Ctrl-N</span></li>
+						<li onclick="popup('Open Project','Prompts the user to view their file directory to open a project file, a format specific to the program representing a work in progress not yet exported into a video')">Open Project...<span>Ctrl-O</span></li>
+						<li onclick="popup('Save Project As','This prompts the user to save their project in their file directory, allowing them to overwrite old files or make a new save for recent changes')">Save Project As...<span>Ctrl-S</span></li>
 						<hr/>
 						<li>Export<span>></span><ul>
-							<li>Custom Format</li>
-							<li>Youtube</li>
-							<li>Vimeo</li>
+							<li onclick="popup('Custom Format','Allows the user to set their own export settings, such as resolution, frame rate, codec, format, audio quality and aspect ratio.')">Custom Format</li>
+							<li onclick="popup('Youtube','A preset format that allows the user to modify some settings appropriate for the popular video host Youtube. This is a shortcut, and helps less experienced users format')">Youtube</li>
+							<li onclick="popup('Vimeo','A preset, yet customizable, format appropriate to uploading for the host Vimeo. This helps new users focus their export')">Vimeo</li>
 						</ul></li>
-						<li>File Information</li>
+						<li onclick="popup('File Information','This reveals the information about the existing file, its current frame rate, the resolution of it, the size of it, the length, the number of clips and other vital information')">File Information</li>
 						<hr/>
-						<li>1 [File Location]</li>
-						<li>2 [File Location]</li>
+						<li onclick="popup('1 [File Location]','This represents the most recent project opened and where it is location')">1 [File Location]</li>
+						<li onclick="popup('1 [File Information]','This represents the second most recent project accessed and where it is located, this list would continue until 5 files were in history')">2 [File Location]</li>
 						<hr/>
-						<li>Quit<span>Ctrl-Q</span></li>
+						<li onclick="popup('Quit','This closes the program, prompting the user to save unfinished changes')">Quit<span>Ctrl-Q</span></li>
 					</ul></li>
 					<li>Edit<ul>
-						<li>Undo<span>Ctrl-Z</span></li>
-						<li>Redo<span>Ctrl-Y</span></li>
+						<li onclick="popup('Undo','Undoes the last change a user made, queuing up a change for Redo to make')">Undo<span>Ctrl-Z</span></li>
+						<li onclick="popup('Redo','Redoes the last change a user made, queuing up for it to be undone again if needed')">Redo<span>Ctrl-Y</span></li>
 						<hr/>
-						<li>Cut<span>Ctrl-X</span></li>
-						<li>Copy<span>Ctrl-C</span></li>
-						<li>Paste<span>Ctrl-P</span></li>
-						<li>Delete<span>Delete</span></li>
-						<li>Clear Selection<span>Ctrl-D</span></li>
-						<li>Select All<span>Ctrl-A</span></li>
+						<li onclick="popup('Cut','If it is done over a selection then it removes that selection and puts it into the clipboard to be pasted')">Cut<span>Ctrl-X</span></li>
+						<li onclick="popup('Copy','Does nothing on a single 'point' but copies any current selection to be pasted elsewhere')">Copy<span>Ctrl-C</span></li>
+						<li onclick="popup('Paste','Wherever the user has selected, this pastes whatever is presently on the clipboard to that point. If they have selected an area, that area will be overwritten')">Paste<span>Ctrl-P</span></li>
+						<li onclick="popup('Delete','Does nothing if selecting a 'point' but any selection made will be deleted')">Delete<span>Delete</span></li>
+						<li onclick="popup('Clear Selection','If anything is currently selected, it cancels that selection and makes it so that nothing is selected')">Clear Selection<span>Ctrl-D</span></li>
+						<li onclick="popup('Select All','If nothing is selected, it will select all timelines. If a timeline is selected, or any point or clip on a timeline, then it will select everything in that timeline')">Select All<span>Ctrl-A</span></li>
 						<hr/>
-						<li>Set Clip Point<span></span></li>						
+						<li onclick="popup('Make Clip At Point','If a single spot in the time line is selected, a \'point\' then both sides of that point would become seperate clips. If it is done over a selection then it makes that selection a clip')">Make Clip At Point<span>Ctrl-\</span></li>
+						</li>						
 					</ul></li>
 					<li>View<ul>
-						<li><input id="statusBar" type="checkbox" name="StatusBar"><label for="statusBar">Status Bar</label></li>
-						<li><input id="positionBar" type="checkbox" name="PositionBar"><label for="positionBar">Position Bar</label></li>
+						<li onclick="popup('Status Bar','All options in the view effect the user interface, these toggle visiblity for user interface elements')"><input id="statusBar" checked type="checkbox" name="StatusBar"><label for="statusBar">Status Bar</label></li>
+						<li onclick="popup('Position Bar','All options in the view effect the user interface, these toggle visiblity for user interface elements')"><input id="positionBar" checked type="checkbox" name="PositionBar"><label for="positionBar">Position Bar</label></li>
 					</ul></li>
 					<li>Go<ul>
-						<li>Beginning<span>Home</span></li>
-						<li>End<span>End</span></li>
-						<li>Prev Frame<span>Left</span></li>
-						<li>Next Frame<span>Right</span></li>
-						<li>Prev Clip<span>Ctrl-Left</span></li>
-						<li>Next Clip<span>Ctrl-Right</span></li>
-						<li>Prev 50 Frames<span>Alt-Left</span></li>
-						<li>Next 50 Frames<span>Alt-Right</span></li>
-						<li>Previous Timeline<span>Ctrl-Up</span></li>
-						<li>Next Timeline<span>Ctrl-Down</span></li>
+						<li onclick="popup('Beginning','Moves to the beginning of the selected timeline, or the start track of the preview otherwise')">Beginning<span>Home</span></li>
+						<li onclick="popup('End','Moves to the end of the selected timeline, or to the end of the preview track')">End<span>End</span></li>
+						<li onclick="popup('Prev Frame','Moves one frame to the left, towards the beginning in the selected timeline or preview')">Prev Frame<span>Left</span></li>
+						<li onclick="popup('Next Frame','Moves on frame to the right, towards the end in the selected timeline or preview')">Next Frame<span>Right</span></li>
+						<li onclick="popup('Prev Clip','Moves to the previous clip in the timeline')">Prev Clip<span>Ctrl-Left</span></li>
+						<li onclick="popup('Next Clip','Moves to the next clip in the timeline')">Next Clip<span>Ctrl-Right</span></li>
+						<li onclick="popup('Prev 50 Frames','Moves 50 frames back towards the starting position')">Prev 50 Frames<span>Alt-Left</span></li>
+						<li onclick="popup('Next 50 Frames','Moves 50 frames towards the ending position')">Next 50 Frames<span>Alt-Right</span></li>
+						<li onclick="popup('Previous Timeline','Move to the timeline above the one selected')">Previous Timeline<span>Ctrl-Up</span></li>
+						<li onclick="popup('Next Timeline','Move to the timeline below the one selected')">Next Timeline<span>Ctrl-Down</span></li>
 						<hr/>
-						<li>Go To Frame...<span>Ctrl-G</span></li>
+						<li onclick="popup('Go To Frame','This prompts the user for a number indicating the frame to go to, it moves to that frame when the user presses enter on the selected timeline or preview.')">Go To Frame...<span>Ctrl-G</span></li>
 					</ul></li>
 					<li>Video<ul>
 						<li>Filter...<span>Ctrl-F</span></li>
@@ -72,7 +73,7 @@
 						<li><input id="smartRendering" type="checkbox" name="SmartRendering"><label for="smartRendering">Smart Rendering</label></li>
 						<li><input id="preserveEmptyFrames" type="checkbox" name="PreserveEmptyFrames"><label for="preserveEmptyFrames">Preserve Empty Frames</label></li>
 					</ul></li>
-					<li>Audio<ul>
+					<li onclick="popup('Audio','These options are functional ones to modify audio files in a number way. They have no on click explanation, as they are implementation based')">Audio<ul>
 						<li>Interleaving...<span>Ctrl-I</span></li>
 						<li>Compression...<span></span></li>
 						<hr/>
@@ -82,19 +83,19 @@
 						<li>Volume<span></span></li>
 					</ul></li>
 					<li>Option<ul>
-						<li>Preferences...<span></span></li>
-						<li>Performance...<span></span></li>
-						<li>Keyboard Shortcuts...<span></span></li>
-						<li>External Encoders...<span></span></li>
-						<li>Plugins...<span></span></li>
+						<li onclick="popup('Preferences','These options would include things on start up, how auto recovery should function, disk i/o settings like the write mode')">Preferences...<span></span></li>
+						<li onclick="popup('Performance','Includes user options like memory usage, and the rendering pipeline')">Performance...<span></span></li>
+						<li onclick="popup('Keyboard Shortcuts','Would allow the user to modify the shortcuts that the program uses to ones more suited to them, aiding is comfort/customizability')">Keyboard Shortcuts...<span></span></li>
+						<li onclick="popup('External Encoders','Dummied option for functionality, not relevant for user interface')">External Encoders...<span></span></li>
+						<li onclick="popup('Plugins','Dummied option for functionality, not relevant for user interface')">Plugins...<span></span></li>
 					</ul></li>
 					<li>Tools<ul>
-						<li>Hex Editor...<span></span></li>
-						<li>Create Test Video...<span></span></li>
+						<li onclick="popup('Hex Editor','Dummied option, this section is for tools that might aid editting, like hex editing')">Hex Editor...<span></span></li>
+						<li onclick="popup('Create Test Video','Dummied option, this might create a fake timeline for testing purposes of a filter or other editting feature')">Create Test Video...<span></span></li>
 					</ul></li>
 					<li>Help<ul>
-						<li>Contents<span>F1</span></li>
-						<li>About Video Editor 4000...<span></span></li>
+						<li onclick="popup('Contents','Opens up a theoretical help file, to aid in the users use of not the interface but the editting features')">Contents<span>F1</span></li>
+						<li onclick="popup('About','A super cool project made by super cool dudes')">About Video Editor 4000...<span></span></li>
 					</ul></li>
 				</ul>
 			</nav>
