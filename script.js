@@ -4,7 +4,7 @@ var dialogBox = document.getElementById("dialogBox");
 var dialogBoxTitle = document.getElementById("dialogBoxTitle");
 var dialogBoxText = document.getElementById("dialogBoxText");
 
-function popup (title, dialog) {
+function popup (title = "Dialog Title", dialog = "Dialog Text") {
 	dialogBoxTitle.innerHTML = title;
 	dialogBoxText.innerHTML = dialog;
 	
