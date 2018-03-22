@@ -5,10 +5,10 @@ var dialogBoxTitle = document.getElementById("dialogBoxTitle");
 var dialogBoxText = document.getElementById("dialogBoxText");
 
 function popup (title, dialog) {
-	dialogBoxTitle.innerHTML() = title;
-	dialogBoxText.innerHTML() = dialog;
+	dialogBoxTitle.innerHTML = title;
+	dialogBoxText.innerHTML = dialog;
 	
-	dialogBox.display = "block";
+	dialogBox.style.display = "block";
 }
 
 function popdown () {

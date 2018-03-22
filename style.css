@@ -79,7 +79,7 @@ header nav > ul > li ul > li > span {
 .previews .preview.three { background-image: url(images/preview3.jpg); }
 
 #dialogBox {
-	display: block;
+	display: none;
 	position: absolute;
 	top: 50%;
 		margin-top: -75px;

@@ -10,7 +10,7 @@
 			<nav>
 				<ul>
 					<li>File<ul>
-						<li>New Project<span>Ctrl-N</span></li>
+						<li onclick="popup('New Project','This is where the New Project options would go.')">New Project<span>Ctrl-N</span></li>
 						<li>Open Project<span>Ctrl-O</span></li>
 						<li>Save Project As...<span>Ctrl-S</span></li>
 						<hr/>
@@ -66,18 +66,16 @@
 			</section>
 		</main>
 		
-		<!-- Footer section: status bar. -->
-		<footer>
-			
-			<script src="script.js"></script>
-		</footer>
-		
 		<dialog id="dialogBox">
 			<button onclick="popdown();" id="close">X</button>
 			<h1 id="dialogBoxTitle">Dialog Title</h1>
 			<p  id="dialogBoxText">Dialog Text</p>
 			<button onclick="popdown();";>Done</button>
-			<button onclick="popdown();">Cancel</button>
 		</dialog>
+		
+		<!-- Footer section: status bar. -->
+		<footer>
+			<script src="script.js"></script>
+		</footer>
 	</body>
 </html>
