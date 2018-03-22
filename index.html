@@ -11,14 +11,14 @@
 				<ul>
 					<li>File<ul>
 						<li onclick="popup('New Project','This is where the New Project options would go.')">New Project<span>Ctrl-N</span></li>
-						<li>Open Project<span>Ctrl-O</span></li>
+						<li>Open Project...<span>Ctrl-O</span></li>
 						<li>Save Project As...<span>Ctrl-S</span></li>
 						<hr/>
-						<li>Export</li><ul>
+						<li>Export<span>></span><ul>
 							<li>Custom Format</li>
 							<li>Youtube</li>
 							<li>Vimeo</li>
-						</ul>
+						</ul></li>
 						<li>File Information</li>
 						<hr/>
 						<li>1 [File Location]</li>
@@ -27,25 +27,74 @@
 						<li>Quit<span>Ctrl-Q</span></li>
 					</ul></li>
 					<li>Edit<ul>
-						<li></li>
+						<li>Undo<span>Ctrl-Z</span></li>
+						<li>Redo<span>Ctrl-Y</span></li>
+						<hr/>
+						<li>Cut<span>Ctrl-X</span></li>
+						<li>Copy<span>Ctrl-C</span></li>
+						<li>Paste<span>Ctrl-P</span></li>
+						<li>Delete<span>Delete</span></li>
+						<li>Clear Selection<span>Ctrl-D</span></li>
+						<li>Select All<span>Ctrl-A</span></li>
+						<hr/>
+						<li>Set Clip Point<span></span></li>						
 					</ul></li>
 					<li>View<ul>
-						<li></li>
+						<li><input id="statusBar" type="checkbox" name="StatusBar"><label for="statusBar">Status Bar</label></li>
+						<li><input id="positionBar" type="checkbox" name="PositionBar"><label for="positionBar">Position Bar</label></li>
 					</ul></li>
 					<li>Go<ul>
-						<li></li>
+						<li>Beginning<span>Home</span></li>
+						<li>End<span>End</span></li>
+						<li>Prev Frame<span>Left</span></li>
+						<li>Next Frame<span>Right</span></li>
+						<li>Prev Clip<span>Ctrl-Left</span></li>
+						<li>Next Clip<span>Ctrl-Right</span></li>
+						<li>Prev 50 Frames<span>Alt-Left</span></li>
+						<li>Next 50 Frames<span>Alt-Right</span></li>
+						<li>Previous Timeline<span>Ctrl-Up</span></li>
+						<li>Next Timeline<span>Ctrl-Down</span></li>
+						<hr/>
+						<li>Go To Frame...<span>Ctrl-G</span></li>
 					</ul></li>
 					<li>Video<ul>
-						<li></li>
+						<li>Filter...<span>Ctrl-F</span></li>
+						<li>Frame Rate...<span></span></li>
+						<li>Color Depth<span></span></li>
+						<li>Compression<span></span></li>
+						<hr/>
+
+						<li><input type="radio" id="streamType1" name="streamType" value="directStreamCopy" checked><label for = "streamType1">Direct Stream Copy</label><span></span></li>
+						<li><input type="radio" id="streamType2" name="streamType" value="fastRecompress"><label for = "streamType2">Fast Recompress</label><span></span></li>
+						<li><input type="radio" id="streamType3" name="streamType" value="normalRecompress"><label for = "streamType3">Normal Recompress</label><span></span></li>
+						<li><input type="radio" id="streamType4" name="streamType" value="fullRecompress"><label for = "streamType4">Full Reprocessing</label><span></span></li>
+						<hr/>
+						<li><input id="smartRendering" type="checkbox" name="SmartRendering"><label for="smartRendering">Smart Rendering</label></li>
+						<li><input id="preserveEmptyFrames" type="checkbox" name="PreserveEmptyFrames"><label for="preserveEmptyFrames">Preserve Empty Frames</label></li>
 					</ul></li>
 					<li>Audio<ul>
-						<li></li>
+						<li>Interleaving...<span>Ctrl-I</span></li>
+						<li>Compression...<span></span></li>
+						<hr/>
+						<li>Use Advanced Filtering<span></span></li>
+						<li>Filters<span></span></li>
+						<li>Conversion<span></span></li>
+						<li>Volume<span></span></li>
 					</ul></li>
 					<li>Option<ul>
-						<li></li>
+						<li>Preferences...<span></span></li>
+						<li>Performance...<span></span></li>
+						<li>Keyboard Shortcuts...<span></span></li>
+						<li>External Encoders...<span></span></li>
+						<li>Plugins...<span></span></li>
 					</ul></li>
 					<li>Tools<ul>
-						<li></li>
+						<li>Hex Editor...<span></span></li>
+						<li>Create Test Video...<span></span></li>
+					</ul></li>
+					<li>Help<ul>
+						<li>Contents<span>F1</span></li>
+						<li>About Video Editor 4000...<span></span></li>
 					</ul></li>
 				</ul>
 			</nav>
