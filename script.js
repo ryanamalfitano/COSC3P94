@@ -29,10 +29,10 @@ function trackoptions() {
 function togglepreview(previewClass) {
 	var preview = document.getElementsByClassName(previewClass);
 	
-	if (preview[0].style.display == "block") {
+	if (preview[0].style.display == "inline-block") {
 		preview[0].style.display = "none";
 	} else {
-		preview[0].style.display = "block";
+		preview[0].style.display = "inline-block";
 	}
 }
 
