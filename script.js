@@ -26,14 +26,29 @@ function trackoptions() {
 	return false;
 }
 
-function togglepreview(previewClass) {
-	var preview = document.getElementsByClassName(previewClass);
+function togglepreview(previewId) {
+	var preview = document.getElementById(previewId);
 	
-	if (preview[0].style.display == "inline-block") {
-		preview[0].style.display = "none";
+	if (preview.style.display == "inline-block") {
+		preview.style.display = "none";
 	} else {
-		preview[0].style.display = "inline-block";
+		preview.style.display = "inline-block";
 	}
+}
+
+function dragpreview(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function allowdrop(ev) {
+    ev.preventDefault();
+}
+
+function droppreview(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.className = "preview "+data;
+	console.log("Dropped track "+data+" into preview!");
 }
 
 function playpause() {

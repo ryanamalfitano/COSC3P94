@@ -41,10 +41,10 @@
 						</li>						
 					</ul></li>
 					<li>View<ul>
-					<li onclick="togglepreview('one')">Toggle Preview One</li>
-					<li onclick="togglepreview('two')">Toggle Preview Two</li>
-					<li onclick="togglepreview('three')">Toggle Preview Three</li>
-					<hr/>
+						<li onclick="togglepreview('pone')">Toggle Preview One</li>
+						<li onclick="togglepreview('ptwo')">Toggle Preview Two</li>
+						<li onclick="togglepreview('pthree')">Toggle Preview Three</li>
+						<hr/>
 						<li onclick="popup('Status Bar','All options in the view effect the user interface, these toggle visiblity for user interface elements')"><input id="statusBar" checked type="checkbox" name="StatusBar"><label for="statusBar">Status Bar</label></li>
 						<li onclick="popup('Position Bar','All options in the view effect the user interface, these toggle visiblity for user interface elements')"><input id="positionBar" checked type="checkbox" name="PositionBar"><label for="positionBar">Position Bar</label></li>
 					</ul></li>
@@ -108,15 +108,16 @@
 		<!-- Main content section: previews, timeline, tracks. -->
 		<main>
 			<section class="previews">
-				<div class="preview one"   style="display: inline-block;"></div>
-				<div class="preview two"   style="display: inline-block;"></div>
-				<div class="preview three" style="display: inline-block;"></div>
+				<div id="pone"   class="preview" ondragover="allowdrop(event)" ondrop="droppreview(event)" style="display: inline-block;"></div>
+				<div id="ptwo"   class="preview" ondragover="allowdrop(event)" ondrop="droppreview(event)" style="display: inline-block;"></div>
+				<div id="pthree" class="preview" ondragover="allowdrop(event)" ondrop="droppreview(event)" style="display: inline-block;"></div>
 			</section>
 			
 			<section class="timeline">
-				<div class="track video" oncontextmenu="trackoptions()">Video Track 1</div>
-				<div class="track audio" oncontextmenu="trackoptions()">Audio Track 1</div><!--
-				<div class="track audio" oncontextmenu="trackoptions()"></div>-->
+				<div id="vidtrack1" class="track video" draggable="true" ondragstart="dragpreview(event)" oncontextmenu="trackoptions()">Video Track 1</div>
+				<div id="audtrack1" class="track audio" draggable="true" ondragstart="dragpreview(event)" oncontextmenu="trackoptions()">Audio Track 1</div>
+				<div id="vidtrack2" class="track video" draggable="true" ondragstart="dragpreview(event)" oncontextmenu="trackoptions()">Video Track 2</div>
+				<div id="audtrack2" class="track audio" draggable="true" ondragstart="dragpreview(event)" oncontextmenu="trackoptions()">Audio Track 2</div>
 			</section>
 		</main>
 		
@@ -130,7 +131,6 @@
 		<!-- Footer section: status bar. -->
 		<footer>
 			<section id="statusbar">
-				<!-- Buttons go here -->
 				<button class="start"></button>
 				<button class="rewind"></button>
 				<button class="fastforward"></button>
@@ -138,6 +138,8 @@
 				<span></span>
 				<button class="playpause play" onclick="playpause()"></button>
 				<button class="stop"></button>
+				
+				<input type="text" disabled value="Frame 0 (00:00:00.000)" />
 			</section>
 			<script src="script.js"></script>
 		</footer>
