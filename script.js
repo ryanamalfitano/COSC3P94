@@ -114,6 +114,40 @@ function playpause() {
 	}
 }
 
+document.addEventListener('keydown',function(e){
+
+	if (e.altKey){
+	if (e.keyCode == 90){
+		document.querySelector("#undo").onclick()
+	}
+		if (e.keyCode == 89){
+		document.querySelector("#redo").onclick()
+	}
+		if (e.keyCode == 88){
+		document.querySelector("#cut").onclick()
+	}
+		if (e.keyCode == 67){
+		document.querySelector("#copy").onclick()
+	}
+		if (e.keyCode == 80){
+		document.querySelector("#paste").onclick()
+	}
+		if (e.keyCode == 68){
+		document.querySelector("#clearselection").onclick()
+	}
+		if (e.keyCode == 65){
+		document.querySelector("#selectall").onclick()
+	}
+		if (e.keyCode == 220){
+		document.querySelector("#makeclipatpoint").onclick()
+	}
+	
+	}
+			if (e.keyCode == 46){
+		document.querySelector("#delete").onclick()
+	}
+},false);
+
 // Thanks T.J. Crowder for the mouse cursor tracking code:
 // https://stackoverflow.com/questions/7790725/javascript-track-mouse-position#7790764
 (function() {
