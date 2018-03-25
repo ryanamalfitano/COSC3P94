@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 	<head>
 		<title>Video Editor 4000</title>
-		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="style.css"  />
 	</head>
 	
 	<body>
@@ -106,18 +106,18 @@
 		</header>
 		
 		<!-- Main content section: previews, timeline, tracks. -->
-		<main>
+		<main id="main">
 			<section class="previews">
 				<div id="pone"   class="preview" ondragover="allowdrop(event)" ondrop="droppreview(event)" style="display: inline-block;"></div>
 				<div id="ptwo"   class="preview" ondragover="allowdrop(event)" ondrop="droppreview(event)" style="display: inline-block;"></div>
 				<div id="pthree" class="preview" ondragover="allowdrop(event)" ondrop="droppreview(event)" style="display: inline-block;"></div>
 			</section>
 			
-			<section class="timeline">
-				<div id="vidtrack1" class="track video" draggable="true" ondragstart="dragpreview(event)" oncontextmenu="trackoptions()">Video Track 1</div>
-				<div id="audtrack1" class="track audio" draggable="true" ondragstart="dragpreview(event)" oncontextmenu="trackoptions()">Audio Track 1</div>
-				<div id="vidtrack2" class="track video" draggable="true" ondragstart="dragpreview(event)" oncontextmenu="trackoptions()">Video Track 2</div>
-				<div id="audtrack2" class="track audio" draggable="true" ondragstart="dragpreview(event)" oncontextmenu="trackoptions()">Audio Track 2</div>
+			<section id="timeline">
+				<canvas id="vidtrack1" class="track video" draggable="true" onclick="trackclick('vidtrack1', 'vid', event)" ondragstart="dragpreview(event)" oncontextmenu="trackoptions()"></canvas>
+				<canvas id="audtrack1" class="track audio" draggable="true" onclick="trackclick('audtrack1', 'aud', event)" ondragstart="dragpreview(event)" oncontextmenu="trackoptions()"></canvas>
+				<canvas id="vidtrack2" class="track video" draggable="true" onclick="trackclick('vidtrack2', 'vid', event)" ondragstart="dragpreview(event)" oncontextmenu="trackoptions()"></canvas>
+				<canvas id="audtrack2" class="track audio" draggable="true" onclick="trackclick('audtrack2', 'aud', event)" ondragstart="dragpreview(event)" oncontextmenu="trackoptions()"></canvas>
 			</section>
 		</main>
 		

@@ -103,11 +103,11 @@ main {
     background: #CCC;
 	
 	box-shadow: 0px 0px 0px 2px #000;
-    z-index: 9999;
+    z-index: 990;
 }
 
 .previews .preview + .preview {
-	border-left: 0px;
+	margin-left: -3px;
 }
 
 .previews .preview#pone   { background-image: url(images/preview1.png); }
@@ -123,7 +123,7 @@ main {
 .previews .preview.audtrack1 { background-image: url(images/audtrack1.png) !important; }
 .previews .preview.audtrack2 { background-image: url(images/audtrack2.png) !important; }
 
-.timeline {
+#timeline {
 	width: 90%;
 	height: 30%;
 	
@@ -133,18 +133,18 @@ main {
 	background: #555555;
 }
 
-.timeline .track {
+#timeline .track {
 	width: 98%;
-	height: 20%;
+	height: 26%;
 	
-	padding: 1% 1% 0;
+	padding: 0 1%;
 	
 	font-family: monospace;
 	background: #DDDDDD;
 }
 
-.timeline .track.video { box-shadow: 0px 0px 5px 3px #FF0000 inset; }
-.timeline .track.audio { box-shadow: 0px 0px 5px 3px #0066FF inset; }
+#timeline .track.video { box-shadow: 0px 0px 5px 3px #FF0000 inset; }
+#timeline .track.audio { box-shadow: 0px 0px 5px 3px #0066FF inset; }
 
 footer {
 	position: absolute;

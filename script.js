@@ -1,8 +1,61 @@
 //Main script file
 
-var dialogBox = document.getElementById("dialogBox");
-var dialogBoxTitle = document.getElementById("dialogBoxTitle");
-var dialogBoxText = document.getElementById("dialogBoxText");
+window.onload = function() {
+	// Get dialog box elements.
+	var dialogBox = document.getElementById("dialogBox");
+	var dialogBoxTitle = document.getElementById("dialogBoxTitle");
+	var dialogBoxText = document.getElementById("dialogBoxText");
+	
+	// Create variable for mouse coordinates
+	var mouseX = 0;
+	var mouseY = 0;
+	
+	
+	// Create tracks.
+	var timeline = document.getElementById("timeline");
+	var timelinecss = getComputedStyle(timeline);
+	
+	var tlwidth = parseInt(timelinecss.getPropertyValue('width'), 10) * 0.98;
+	var tlheight = parseInt(timelinecss.getPropertyValue('height'), 10) * 0.20;
+	
+	var tracks = document.getElementsByClassName("track");
+	var main = document.getElementById("main");
+	
+	// Setup track canvases.
+	for (i = 0; i < tracks.length; i++) {
+		tracks[i].width = tlwidth;
+		tracks[i].height = tlheight;
+		
+		var trk = tracks[i].getContext("2d");
+		
+		trk.font = "10px monospace";
+		trk.fillText("Video Track 1", 10, 12);
+	}
+}
+
+function trackclick(track, type, ev) {
+	ev.preventDefault();
+	
+	var track = document.getElementById(track);
+	
+	var trk = track.getContext("2d");
+	
+	if (type == "vid") {
+		trk.strokeStyle = "#FF0000";
+		trk.shadowColor = "#FF0000";
+		trk.fillStyle = "#FF0000";
+	} else {
+		trk.strokeStyle = "#0066FF";
+		trk.shadowColor = "#0066FF";
+		trk.fillStyle = "#0066FF";
+	}
+	
+	trk.shadowBlur = 5;
+	trk.strokeRect(mouseX - 75, 0, 0, 100);
+	trk.fill();
+	
+	console.log(mouseX+":"+mouseY);
+}
 
 function popup (title = "Dialog Title", dialog = "Dialog Text") {
 	dialogBoxTitle.innerHTML = title;
@@ -61,10 +114,12 @@ function playpause() {
 	}
 }
 
+// Thanks T.J. Crowder for the mouse cursor tracking code:
+// https://stackoverflow.com/questions/7790725/javascript-track-mouse-position#7790764
 (function() {
     document.onmousemove = handleMouseMove;
     function handleMouseMove(event) {
-        var dot, eventDoc, doc, body, pageX, pageY;
+        var eventDoc, doc, body;
 
         event = event || window.event; // IE-ism
 
@@ -83,8 +138,9 @@ function playpause() {
               (doc && doc.scrollTop  || body && body.scrollTop  || 0) -
               (doc && doc.clientTop  || body && body.clientTop  || 0 );
         }
-
-        // Use event.pageX / event.pageY here
+		
+		mouseX = event.pageX;
+		mouseY = event.pageY;
     }
 })();
 
