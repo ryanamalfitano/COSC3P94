@@ -126,18 +126,22 @@ function stopbutton(){
 	playing=false;
 	var playpause = document.getElementsByClassName("playpause");
 	playpause[0].className = "playpause play";
-	document.getElementById("timer").innerHTML="Frame:0   00:00.00";
+	document.getElementById("timer").innerHTML="00:00.00";
+	document.getElementById("frames").innerHTML="Frame:0";
 }
 
 function setTime() {
 	var time=document.getElementById("timer");
+	var frame=document.getElementById("frames");
+	
 	if (playing){
 		++totalMilliseconds;
 		var milliseconds = pad(parseInt(totalMilliseconds)%100);
 		var seconds =pad(parseInt((totalMilliseconds/100)%60));
 		var minutes=pad(parseInt(totalMilliseconds/6000));
 		var framescount=parseInt((totalMilliseconds/100)*60);
-		time.innerHTML="Frame:"+framescount+"   "+minutes+":"+seconds+"."+milliseconds;
+		time.innerHTML=minutes+":"+seconds+"."+milliseconds;
+		frame.innerHTML="Frame:"+framescount;
 	}
 }
 

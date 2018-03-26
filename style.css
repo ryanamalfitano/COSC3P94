@@ -179,13 +179,17 @@ footer span { display: inline-block; width: 30px; height: 30px; }
 footer div {
     display: inline-block;
     margin-left: 40px;
-    padding: 1px 2px;
+    padding: 2px 20px;
     
     background: #EEE;
     border: 1px solid #999;
     color: #555;
     
     vertical-align: super;
+}
+
+footer div label + label {
+    margin-left: 50px;
 }
 
 #dialogBox {
