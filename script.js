@@ -1,8 +1,5 @@
 // Global declarations
 // Used for keeping track of timer.
-var minutesLabel = document.getElementById("minutes");
-var secondsLabel = document.getElementById("seconds");
-var millisecondsLabel = document.getElementById("milliseconds");
 var totalMilliseconds = 0;
 var playing=false;
 setInterval(setTime, 1);
@@ -129,17 +126,18 @@ function stopbutton(){
 	playing=false;
 	var playpause = document.getElementsByClassName("playpause");
 	playpause[0].className = "playpause play";
-	millisecondsLabel.innerHTML = "000";
-	secondsLabel.innerHTML="00";
-	minutesLabel.innerHTML="00";
+	document.getElementById("timer").innerHTML="Frame:0   00:00:.00";
 }
 
 function setTime() {
+	var time=document.getElementById("timer");
 	if (playing){
 		++totalMilliseconds;
-		millisecondsLabel.innerHTML = parseInt(totalMilliseconds)%100;
-		secondsLabel.innerHTML=pad(parseInt((totalMilliseconds/100)%60));
-		minutesLabel.innerHTML=pad(parseInt(totalMilliseconds/6000));
+		var milliseconds = pad(parseInt(totalMilliseconds)%100);
+		var seconds =pad(parseInt((totalMilliseconds/100)%60));
+		var minutes=pad(parseInt(totalMilliseconds/6000));
+		var framescount=parseInt(totalMilliseconds/100);
+		time.innerHTML="Frame:"+framescount+"   "+minutes+":"+seconds+"."+milliseconds;
 	}
 }
 
