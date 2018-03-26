@@ -126,7 +126,7 @@ function stopbutton(){
 	playing=false;
 	var playpause = document.getElementsByClassName("playpause");
 	playpause[0].className = "playpause play";
-	document.getElementById("timer").innerHTML="Frame:0   00:00:.00";
+	document.getElementById("timer").innerHTML="Frame:0   00:00.00";
 }
 
 function setTime() {
