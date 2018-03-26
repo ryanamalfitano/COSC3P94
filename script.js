@@ -1,12 +1,11 @@
-	//Used for keeping track of timer
-	var minutesLabel = document.getElementById("minutes");
-	var secondsLabel = document.getElementById("seconds");
-	var millisecondsLabel = document.getElementById("milliseconds");
-	var totalMilliseconds = 0;
-	var playing=false;
-	setInterval(setTime, 1);
-
-//Main script file
+// Global declarations
+// Used for keeping track of timer.
+var minutesLabel = document.getElementById("minutes");
+var secondsLabel = document.getElementById("seconds");
+var millisecondsLabel = document.getElementById("milliseconds");
+var totalMilliseconds = 0;
+var playing=false;
+setInterval(setTime, 1);
 
 window.onload = function() {
 	// Get dialog box elements.
