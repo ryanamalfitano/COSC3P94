@@ -2,7 +2,7 @@
 // Used for keeping track of timer.
 var totalMilliseconds = 0;
 var playing=false;
-setInterval(setTime, 1);
+setInterval(setTime, 10);
 
 window.onload = function() {
 	// Get dialog box elements.
@@ -136,7 +136,7 @@ function setTime() {
 		var milliseconds = pad(parseInt(totalMilliseconds)%100);
 		var seconds =pad(parseInt((totalMilliseconds/100)%60));
 		var minutes=pad(parseInt(totalMilliseconds/6000));
-		var framescount=parseInt(totalMilliseconds/100);
+		var framescount=parseInt((totalMilliseconds/100)*60);
 		time.innerHTML="Frame:"+framescount+"   "+minutes+":"+seconds+"."+milliseconds;
 	}
 }
