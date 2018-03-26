@@ -1,3 +1,11 @@
+	//Used for keeping track of timer
+	var minutesLabel = document.getElementById("minutes");
+	var secondsLabel = document.getElementById("seconds");
+	var millisecondsLabel = document.getElementById("milliseconds");
+	var totalMilliseconds = 0;
+	var playing=false;
+	setInterval(setTime, 1);
+
 //Main script file
 
 window.onload = function() {
@@ -109,9 +117,39 @@ function playpause() {
 	
 	if (playpause[0].className == "playpause play") {
 		playpause[0].className = "playpause pause";
+		playing=true;
 	} else {
 		playpause[0].className = "playpause play";
+		playing=false;
 	}
+}
+
+function stopbutton(){
+	totalMilliseconds=0;
+	playing=false;
+	var playpause = document.getElementsByClassName("playpause");
+	playpause[0].className = "playpause play";
+	millisecondsLabel.innerHTML = "000";
+	secondsLabel.innerHTML="00";
+	minutesLabel.innerHTML="00";
+}
+
+function setTime() {
+	if (playing){
+		++totalMilliseconds;
+		millisecondsLabel.innerHTML = parseInt(totalMilliseconds)%100;
+		secondsLabel.innerHTML=pad(parseInt((totalMilliseconds/100)%60));
+		minutesLabel.innerHTML=pad(parseInt(totalMilliseconds/6000));
+	}
+}
+
+function pad(val) {
+  var valString = val + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  } else {
+    return valString;
+  }
 }
 
 document.addEventListener('keydown',function(e){
@@ -142,6 +180,10 @@ document.addEventListener('keydown',function(e){
 		document.querySelector("#makeclipatpoint").onclick()
 	}
 	
+	}
+	
+			if (e.keyCode == 32){
+		playpause();
 	}
 			if (e.keyCode == 46){
 		document.querySelector("#delete").onclick()
