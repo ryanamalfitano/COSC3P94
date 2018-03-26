@@ -29,6 +29,8 @@ window.onload = function() {
 	var tracks = document.getElementsByClassName("track");
 	var main = document.getElementById("main");
 	
+	var tracktext = ["Video Track 1", "Audio Track 1", "Video Track 2", "Audio Track 2"];
+	
 	// Setup track canvases.
 	for (i = 0; i < tracks.length; i++) {
 		tracks[i].width = tlwidth;
@@ -37,7 +39,7 @@ window.onload = function() {
 		var trk = tracks[i].getContext("2d");
 		
 		trk.font = "10px monospace";
-		trk.fillText("Video Track 1", 10, 12);
+		trk.fillText(tracktext[i], window.innerWidth * 0.01, window.innerHeight * 0.03);
 	}
 }
 
@@ -45,7 +47,6 @@ function trackclick(track, type, ev) {
 	ev.preventDefault();
 	
 	var track = document.getElementById(track);
-	
 	var trk = track.getContext("2d");
 	
 	if (type == "vid") {
@@ -59,13 +60,13 @@ function trackclick(track, type, ev) {
 	}
 	
 	trk.shadowBlur = 5;
-	trk.strokeRect(mouseX - 75, 0, 0, 100);
+	trk.strokeRect(mouseX - (window.innerWidth * 0.055), 0, 1, 500);
 	trk.fill();
 	
 	console.log(mouseX+":"+mouseY);
 }
 
-function popup (title = "Dialog Title", dialog = "Dialog Text") {
+function popup (title, dialog) {
 	dialogBoxTitle.innerHTML = title;
 	dialogBoxText.innerHTML  = dialog;
 	
