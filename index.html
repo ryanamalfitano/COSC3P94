@@ -105,7 +105,7 @@
 			</nav>
 		</header>
 		
-		<!-- Main content section: previews, timeline, tracks. -->
+		<!-- Main content section: previews, status bar, timeline, tracks. -->
 		<main id="main">
 			<section class="previews">
 				<div id="pone"   class="preview" ondragover="allowdrop(event)" ondrop="droppreview(event)" style="display: inline-block;"></div>
@@ -113,11 +113,24 @@
 				<div id="pthree" class="preview" ondragover="allowdrop(event)" ondrop="droppreview(event)" style="display: inline-block;"></div>
 			</section>
 			
+            <section id="statusbar">
+				<button class="start"></button>
+				<button class="rewind"></button>
+				<span></span>
+				<button class="playpause play" onclick="playpause()"></button>
+				<button class="stop" onclick="stopbutton()"></button>
+                <span></span>
+                <button class="fastforward"></button>
+				<button class="end"></button>
+				
+				<div><label id="frames">Frame:0</label><label id="timer">00:00.00</label></div>
+			</section>
+            
 			<section id="timeline">
-				<canvas id="vidtrack1" class="track video" draggable="true" onclick="trackclick('vidtrack1', 'vid', event)" ondragstart="dragpreview(event)" oncontextmenu="trackoptions()"></canvas>
-				<canvas id="audtrack1" class="track audio" draggable="true" onclick="trackclick('audtrack1', 'aud', event)" ondragstart="dragpreview(event)" oncontextmenu="trackoptions()"></canvas>
-				<canvas id="vidtrack2" class="track video" draggable="true" onclick="trackclick('vidtrack2', 'vid', event)" ondragstart="dragpreview(event)" oncontextmenu="trackoptions()"></canvas>
-				<canvas id="audtrack2" class="track audio" draggable="true" onclick="trackclick('audtrack2', 'aud', event)" ondragstart="dragpreview(event)" oncontextmenu="trackoptions()"></canvas>
+				<canvas id="vidtrack1" class="track video" draggable="true" onDblClick="trackclick('vidtrack1', 'vid', event)" ondragstart="dragpreview(event)" oncontextmenu="trackoptions()"></canvas>
+				<canvas id="audtrack1" class="track audio" draggable="true" onDblClick="trackclick('audtrack1', 'aud', event)" ondragstart="dragpreview(event)" oncontextmenu="trackoptions()"></canvas>
+				<canvas id="vidtrack2" class="track video" draggable="true" onDblClick="trackclick('vidtrack2', 'vid', event)" ondragstart="dragpreview(event)" oncontextmenu="trackoptions()"></canvas>
+				<canvas id="audtrack2" class="track audio" draggable="true" onDblClick="trackclick('audtrack2', 'aud', event)" ondragstart="dragpreview(event)" oncontextmenu="trackoptions()"></canvas>
 			</section>
 		</main>
 		
@@ -128,19 +141,9 @@
 			<button onclick="popdown();";>Done</button>
 		</dialog>
 		
-		<!-- Footer section: status bar. -->
-		<footer>
-			<section id="statusbar">
-				<button class="start"></button>
-				<button class="rewind"></button>
-				<button class="fastforward"></button>
-				<button class="end"></button>
-				<span></span>
-				<button class="playpause play" onclick="playpause()"></button>
-				<button class="stop" onclick="stopbutton()"></button>
-				 <div><label id="frames">Frame:0</label><label id="timer">00:00.00</label></div>
-			</section>
+		<!-- #statusbar section. -->
+		<#statusbar>
 			<script src="script.js"></script>
-		</footer>
+		</#statusbar>
 	</body>
 </html>

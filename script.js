@@ -26,6 +26,11 @@ window.onload = function() {
 	var main = document.getElementById("main");
 	
 	var tracktext = ["Video Track 1", "Audio Track 1", "Video Track 2", "Audio Track 2"];
+	var trackimg = ["images/vidtrack1.jpg", "images/audtrack1.png", "images/vidtrack2.jpg", "images/audtrack2.png"];
+	var image0 = new Image();
+	var image1 = new Image();
+	var image2 = new Image();
+	var image3 = new Image();
 	
 	// Setup track canvases.
 	for (i = 0; i < tracks.length; i++) {
@@ -34,8 +39,39 @@ window.onload = function() {
 		
 		var trk = tracks[i].getContext("2d");
 		
-		trk.font = "10px monospace";
-		trk.fillText(tracktext[i], window.innerWidth * 0.01, window.innerHeight * 0.03);
+		trk.font = "16px monospace";
+		trk.fillText(tracktext[i], window.innerWidth * 0.01, window.innerHeight * 0.032);
+		
+		switch (i) {
+			case 0:
+				var track0 = tracks[i].getContext("2d");
+				image0.src = trackimg[i];
+				image0.onload = function(){
+					track0.drawImage(image0, 150, 3, 100, 45);
+				}
+				break;
+			case 1:
+				var track1 = tracks[i].getContext("2d");
+				image1.src = trackimg[i];
+				image1.onload = function(){
+					track1.drawImage(image1, 150, 3, 100, 45);
+				}
+				break;
+			case 2:
+				var track2 = tracks[i].getContext("2d");
+				image2.src = trackimg[i];
+				image2.onload = function(){
+					track2.drawImage(image2, 150, 3, 100, 45);
+				}
+				break;
+			case 3:
+				var track3 = tracks[i].getContext("2d");
+				image3.src = trackimg[i];
+				image3.onload = function(){
+					track3.drawImage(image3, 150, 3, 100, 45);
+				}
+				break;
+		}
 	}
 }
 
@@ -59,7 +95,7 @@ function trackclick(track, type, ev) {
 	trk.strokeRect(mouseX - (window.innerWidth * 0.055), 0, 1, 500);
 	trk.fill();
 	
-	console.log(mouseX+":"+mouseY);
+	//console.log(mouseX+":"+mouseY);
 }
 
 function popup (title, dialog) {

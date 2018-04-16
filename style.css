@@ -51,6 +51,11 @@ header nav > ul > li ul > li {
 	list-style: none;
 }
 
+header nav > ul > li ul > li ul {
+    top: 0;
+    left: 205px;
+}
+
 header nav > ul > li ul > li > span {
 	display: inline-block;
 	position: absolute;
@@ -146,20 +151,17 @@ main {
 #timeline .track.video { box-shadow: 0px 0px 5px 3px #FF0000 inset; }
 #timeline .track.audio { box-shadow: 0px 0px 5px 3px #0066FF inset; }
 
-footer {
-	position: absolute;
-	bottom: 0px;
-	left: 0px;
-	
+#statusbar {
 	width: 98%;
 	height: 7%;
 	padding: 5px 1% 0;
 	
+    text-align: center;
 	border-top: 2px #AAA;
 	box-shadow: 0px -3px 5px #999;
 }
 
-footer button {
+#statusbar button {
 	width: 30px;
 	height: 30px;
 	
@@ -167,16 +169,16 @@ footer button {
 	background-size: cover;
 }
 
-footer button.play        { background-image: url(images/play.png); }
-footer button.pause       { background-image: url(images/pause.png); }
-footer button.stop        { background-image: url(images/stop.png); }
-footer button.rewind      { background-image: url(images/rewind.png); }
-footer button.fastforward { background-image: url(images/fastforward.png); }
-footer button.start       { background-image: url(images/start.png); }
-footer button.end         { background-image: url(images/end.png); }
-footer span { display: inline-block; width: 30px; height: 30px; }
+#statusbar button.play        { background-image: url(images/play.png); }
+#statusbar button.pause       { background-image: url(images/pause.png); }
+#statusbar button.stop        { background-image: url(images/stop.png); }
+#statusbar button.rewind      { background-image: url(images/rewind.png); }
+#statusbar button.fastforward { background-image: url(images/fastforward.png); }
+#statusbar button.start       { background-image: url(images/start.png); }
+#statusbar button.end         { background-image: url(images/end.png); }
+#statusbar span { display: inline-block; width: 15px; height: 30px; }
 
-footer div {
+#statusbar div {
     display: inline-block;
     margin-left: 40px;
     padding: 2px 20px;
@@ -188,7 +190,7 @@ footer div {
     vertical-align: super;
 }
 
-footer div label + label {
+#statusbar div label + label {
     margin-left: 50px;
 }
 
