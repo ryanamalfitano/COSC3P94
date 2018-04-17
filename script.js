@@ -17,7 +17,7 @@ var trackBoxAud = document.getElementById("trackBoxAud");
 var mediaBrowser = document.getElementById("mediaBrowser");
 
 // Vars for keeping track of open dialog boxes and menus.
-var dialogOpen = false;
+var dialogOpen = true;
 var trackOpen = false;
 var menuOpen = false;
 var mbrowserOpen = false;

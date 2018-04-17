@@ -302,7 +302,7 @@ main {
 .trackBox.audBox { height: 130px; }
 
 #dialogBox {
-    display: none;
+    display: block;
     position: absolute;
     top: 50%;
         margin-top: -85px;
