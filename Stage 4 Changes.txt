@@ -1,0 +1,15 @@
+- add media browser
+
++ add tutorial message
++ make timeline actually indicate time
++ add styling and colour
++ make preview windows less confusing
++ make video menu radios more clear
++ add import function
++ change menus to open on click
++ open track menu on right click
++ close popup and track menus on off-click
++ move status bar between previews and timeline
++ change clipping to doubleclick
++ move submenus so they don't cover items below them
++ add track preview images

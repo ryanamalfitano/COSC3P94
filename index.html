@@ -1,149 +1,177 @@
 <!DOCTYPE html>
-	<head>
-		<title>Video Editor 4000</title>
-		<link rel="stylesheet" href="style.css"  />
-	</head>
-	
-	<body>
-		<!-- Header section: Menus, options, tools. -->
-		<header>
-			<nav>
-				<ul>
-					<li>File<ul>
-						<li onclick="popup('New Project','This is how a user will begin an entirely new project, prompting them to save their existing one if it has changes made')">New Project<span>Ctrl-N</span></li>
-						<li onclick="popup('Open Project','Prompts the user to view their file directory to open a project file, a format specific to the program representing a work in progress not yet exported into a video')">Open Project...<span>Ctrl-O</span></li>
-						<li onclick="popup('Save Project As','This prompts the user to save their project in their file directory, allowing them to overwrite old files or make a new save for recent changes')">Save Project As...<span>Ctrl-S</span></li>
-						<hr/>
-						<li>Export<span>></span><ul>
-							<li onclick="popup('Custom Format','Allows the user to set their own export settings, such as resolution, frame rate, codec, format, audio quality and aspect ratio.')">Custom Format</li>
-							<li onclick="popup('Youtube','A preset format that allows the user to modify some settings appropriate for the popular video host Youtube. This is a shortcut, and helps less experienced users format')">Youtube</li>
-							<li onclick="popup('Vimeo','A preset, yet customizable, format appropriate to uploading for the host Vimeo. This helps new users focus their export')">Vimeo</li>
-						</ul></li>
-						<li onclick="popup('File Information','This reveals the information about the existing file, its current frame rate, the resolution of it, the size of it, the length, the number of clips and other vital information')">File Information</li>
-						<hr/>
-						<li onclick="popup('1 [File Location]','This represents the most recent project opened and where it is location')">1 [File Location]</li>
-						<li onclick="popup('1 [File Information]','This represents the second most recent project accessed and where it is located, this list would continue until 5 files were in history')">2 [File Location]</li>
-						<hr/>
-						<li onclick="popup('Quit','This closes the program, prompting the user to save unfinished changes')">Quit<span>Ctrl-Q</span></li>
-					</ul></li>
-					<li>Edit<ul>
-						<li id="undo" onclick="popup('Undo','Undoes the last change a user made, queuing up a change for Redo to make')">Undo<span>Ctrl-Z</span></li>
-						<li id="redo" onclick="popup('Redo','Redoes the last change a user made, queuing up for it to be undone again if needed')">Redo<span>Ctrl-Y</span></li>
-						<hr/>
-						<li id="cut" onclick="popup('Cut','If it is done over a selection then it removes that selection and puts it into the clipboard to be pasted')">Cut<span>Ctrl-X</span></li>
-						<li id="copy" onclick="popup('Copy','Does nothing on a single \'point\' but copies any current selection to be pasted elsewhere')">Copy<span>Ctrl-C</span></li>
-						<li id="paste" onclick="popup('Paste','Wherever the user has selected, this pastes whatever is presently on the clipboard to that point. If they have selected an area, that area will be overwritten')">Paste<span>Ctrl-P</span></li>
-						<li id="delete" onclick="popup('Delete','Does nothing if selecting a \'point\' but any selection made will be deleted')">Delete<span>Delete</span></li>
-						<li id="clearselection" onclick="popup('Clear Selection','If anything is currently selected, it cancels that selection and makes it so that nothing is selected')">Clear Selection<span>Ctrl-D</span></li>
-						<li id="selectall" onclick="popup('Select All','If nothing is selected, it will select all timelines. If a timeline is selected, or any point or clip on a timeline, then it will select everything in that timeline')">Select All<span>Ctrl-A</span></li>
-						<hr/>
-						<li id="makeclipatpoint" onclick="popup('Make Clip At Point','If a single spot in the time line is selected, a \'point\' then both sides of that point would become seperate clips. If it is done over a selection then it makes that selection a clip')">Make Clip At Point<span>Ctrl-\</span></li>
-						</li>						
-					</ul></li>
-					<li>View<ul>
-						<li onclick="togglepreview('pone')">Toggle Preview One</li>
-						<li onclick="togglepreview('ptwo')">Toggle Preview Two</li>
-						<li onclick="togglepreview('pthree')">Toggle Preview Three</li>
-						<hr/>
-						<li onclick="popup('Status Bar','All options in the view effect the user interface, these toggle visiblity for user interface elements')"><input id="statusBar" checked type="checkbox" name="StatusBar"><label for="statusBar">Status Bar</label></li>
-						<li onclick="popup('Position Bar','All options in the view effect the user interface, these toggle visiblity for user interface elements')"><input id="positionBar" checked type="checkbox" name="PositionBar"><label for="positionBar">Position Bar</label></li>
-					</ul></li>
-					<li>Go<ul>
-						<li onclick="popup('Beginning','Moves to the beginning of the selected timeline, or the start track of the preview otherwise')">Beginning<span>Home</span></li>
-						<li onclick="popup('End','Moves to the end of the selected timeline, or to the end of the preview track')">End<span>End</span></li>
-						<li onclick="popup('Prev Frame','Moves one frame to the left, towards the beginning in the selected timeline or preview')">Prev Frame<span>Left</span></li>
-						<li onclick="popup('Next Frame','Moves on frame to the right, towards the end in the selected timeline or preview')">Next Frame<span>Right</span></li>
-						<li onclick="popup('Prev Clip','Moves to the previous clip in the timeline')">Prev Clip<span>Ctrl-Left</span></li>
-						<li onclick="popup('Next Clip','Moves to the next clip in the timeline')">Next Clip<span>Ctrl-Right</span></li>
-						<li onclick="popup('Prev 50 Frames','Moves 50 frames back towards the starting position')">Prev 50 Frames<span>Alt-Left</span></li>
-						<li onclick="popup('Next 50 Frames','Moves 50 frames towards the ending position')">Next 50 Frames<span>Alt-Right</span></li>
-						<li onclick="popup('Previous Timeline','Move to the timeline above the one selected')">Previous Timeline<span>Ctrl-Up</span></li>
-						<li onclick="popup('Next Timeline','Move to the timeline below the one selected')">Next Timeline<span>Ctrl-Down</span></li>
-						<hr/>
-						<li onclick="popup('Go To Frame','This prompts the user for a number indicating the frame to go to, it moves to that frame when the user presses enter on the selected timeline or preview.')">Go To Frame...<span>Ctrl-G</span></li>
-					</ul></li>
-					<li>Video<ul>
-						<li>Filter...<span>Ctrl-F</span></li>
-						<li>Frame Rate...<span></span></li>
-						<li>Color Depth<span></span></li>
-						<li>Compression<span></span></li>
-						<hr/>
-
-						<li><input type="radio" id="streamType1" name="streamType" value="directStreamCopy" checked><label for = "streamType1">Direct Stream Copy</label><span></span></li>
-						<li><input type="radio" id="streamType2" name="streamType" value="fastRecompress"><label for = "streamType2">Fast Recompress</label><span></span></li>
-						<li><input type="radio" id="streamType3" name="streamType" value="normalRecompress"><label for = "streamType3">Normal Recompress</label><span></span></li>
-						<li><input type="radio" id="streamType4" name="streamType" value="fullRecompress"><label for = "streamType4">Full Reprocessing</label><span></span></li>
-						<hr/>
-						<li><input id="smartRendering" type="checkbox" name="SmartRendering"><label for="smartRendering">Smart Rendering</label></li>
-						<li><input id="preserveEmptyFrames" type="checkbox" name="PreserveEmptyFrames"><label for="preserveEmptyFrames">Preserve Empty Frames</label></li>
-					</ul></li>
-					<li onclick="popup('Audio','These options are functional ones to modify audio files in a number way. They have no on click explanation, as they are implementation based')">Audio<ul>
-						<li>Interleaving...<span>Ctrl-I</span></li>
-						<li>Compression...<span></span></li>
-						<hr/>
-						<li>Use Advanced Filtering<span></span></li>
-						<li>Filters<span></span></li>
-						<li>Conversion<span></span></li>
-						<li>Volume<span></span></li>
-					</ul></li>
-					<li>Option<ul>
-						<li onclick="popup('Preferences','These options would include things on start up, how auto recovery should function, disk i/o settings like the write mode')">Preferences...<span></span></li>
-						<li onclick="popup('Performance','Includes user options like memory usage, and the rendering pipeline')">Performance...<span></span></li>
-						<li onclick="popup('Keyboard Shortcuts','Would allow the user to modify the shortcuts that the program uses to ones more suited to them, aiding is comfort/customizability')">Keyboard Shortcuts...<span></span></li>
-						<li onclick="popup('External Encoders','Dummied option for functionality, not relevant for user interface')">External Encoders...<span></span></li>
-						<li onclick="popup('Plugins','Dummied option for functionality, not relevant for user interface')">Plugins...<span></span></li>
-					</ul></li>
-					<li>Tools<ul>
-						<li onclick="popup('Hex Editor','Dummied option, this section is for tools that might aid editting, like hex editing')">Hex Editor...<span></span></li>
-						<li onclick="popup('Create Test Video','Dummied option, this might create a fake timeline for testing purposes of a filter or other editting feature')">Create Test Video...<span></span></li>
-					</ul></li>
-					<li>Help<ul>
-						<li onclick="popup('Contents','Opens up a theoretical help file, to aid in the users use of not the interface but the editting features')">Contents<span>F1</span></li>
-						<li onclick="popup('About','A super cool project made by super cool dudes')">About Video Editor 4000...<span></span></li>
-					</ul></li>
-				</ul>
-			</nav>
-		</header>
-		
-		<!-- Main content section: previews, status bar, timeline, tracks. -->
-		<main id="main">
-			<section class="previews">
-				<div id="pone"   class="preview" ondragover="allowdrop(event)" ondrop="droppreview(event)" style="display: inline-block;"></div>
-				<div id="ptwo"   class="preview" ondragover="allowdrop(event)" ondrop="droppreview(event)" style="display: inline-block;"></div>
-				<div id="pthree" class="preview" ondragover="allowdrop(event)" ondrop="droppreview(event)" style="display: inline-block;"></div>
-			</section>
-			
+    <head>
+        <title>Video Editor 4000</title>
+        <link rel="stylesheet" href="style.css"  />
+    </head>
+    
+    <body>
+        <!-- Header section: Menus, options, tools. -->
+        <header>
+            <nav>
+                <ul>
+                    <li><label for="filemenu">File</label><input type="checkbox" class="hidden" onClick="window.setTimeout(function() {menuOpen = true}, 10);" id="filemenu" /><ul>
+                        <li onclick="popup('New Project','This option will open an entirely new project, prompting the user to save their existing one if it has changes made.')">New Project<span>Ctrl-N</span></li>
+                        <li onclick="popup('Open Project','Prompts the user to open an existing project file for further editing.')">Open Project...<span>Ctrl-O</span></li>
+                        <li onclick="popup('Save Project','This option prompts the user to save the current project with the name of their choice.')">Save Project...<span>Ctrl-S</span></li>
+                        <li onclick="popup('Current Project Info','This options retrieves information about the current project: its frame rate, resolution, file size, length, number of clips, and other vital information.')">Current Project Info</li>
+                        <hr/>
+                        <li onclick="popup('Import','This option allows the user to import new source video, audio, or images for use in their current project.')">Import...</li>
+                        <li><label for="exportmenu" class="openAnyways">Export</label><input type="checkbox" class="hidden" onClick="window.setTimeout(function() {menuOpen = true}, 10);" id="exportmenu" /><span>></span><ul>
+                            <li onclick="popup('Custom Format','Allows the user to set their own export settings, such as resolution, frame rate, codec, format, audio quality and aspect ratio.')">Custom Format</li>
+                            <li onclick="popup('Youtube','A preset format specialized for uploading to Youtube. This is a shortcut, and helps less experienced users format their videos easily and efficiently.')">Youtube</li>
+                            <li onclick="popup('Vimeo','A preset format specialized for uploading to Vimeo. This is a shortcut, and helps less experienced users format their videos easily and efficiently.')">Vimeo</li>
+                        </ul></li>
+                        <hr/>
+                        <li>Recent Files:</li>
+                        <li onclick="popup('1: [File Location]','This option opens the most recently opened project file and shows its location.')">1: [File Location]</li>
+                        <li onclick="popup('2: [File Location]','This option opens the second most recently opened project file and shows its location. Up to five files can appear, if at least five project files have been opened.')">2: [File Location]</li>
+                        <hr/>
+                        <li onclick="popup('Quit','This closes the program, prompting the user to save if changes have been made.')">Quit<span>Ctrl-Q</span></li>
+                    </ul></li>
+                    <li><label for="editmenu">Edit</label><input type="checkbox" class="hidden" onClick="window.setTimeout(function() {menuOpen = true}, 10);" id="editmenu" /><ul>
+                        <li id="undo" onclick="popup('Undo','Undoes the last change a user made, queuing up the change for Redo to remake.')">Undo<span>Ctrl-Z</span></li>
+                        <li id="redo" onclick="popup('Redo','Redoes the last change a user made, queuing it up so as to be Undoable again if needed.')">Redo<span>Ctrl-Y</span></li>
+                        <hr/>
+                        <li id="cut" onclick="popup('Cut','Can be used to simultaneously copy and remove a clip, storing it in the clipboard to be pasted later.')">Cut<span>Ctrl-X</span></li>
+                        <li id="copy" onclick="popup('Copy','Copies a clip, storing it in the clipboard to be pasted later.')">Copy<span>Ctrl-C</span></li>
+                        <li id="paste" onclick="popup('Paste','Pastes in whatever clip was last Cut or Copied at the selected track location.')">Paste<span>Ctrl-P</span></li>
+                        <li id="delete" onclick="popup('Delete','Deletes the currently selected clip.')">Delete<span>Delete</span></li>
+                        <li id="clearselection" onclick="popup('Clear Selection','If anything is currently selected, this option cancels and removes that selection.')">Clear Selection<span>Ctrl-D</span></li>
+                        <li id="selectall" onclick="popup('Select All','If nothing is selected, this option will select all timelines. If a timeline (or any point or clip on a timeline) is selected, then this option will select everything in that timeline.')">Select All<span>Ctrl-A</span></li>
+                    <!--<hr/>
+                        <li id="openmediabrowser" onclick="mediabrowserup()">Open Media Browser<span>Ctrl-M</span></li>-->
+                    </ul></li>
+                    <li><label for="viewmenu">View</label><input type="checkbox" class="hidden" onClick="window.setTimeout(function() {menuOpen = true}, 10);" id="viewmenu" /><ul>
+                        <li onclick="togglepreview('pone')">Toggle Preview One</li>
+                        <li onclick="togglepreview('ptwo')">Toggle Preview Two</li>
+                        <hr/>
+                    </ul></li>
+                    <li><label for="gomenu">Go</label><input type="checkbox" class="hidden" onClick="window.setTimeout(function() {menuOpen = true}, 10);" id="gomenu" /><ul>
+                        <li onclick="popup('Back 50 Frames','Moves 50 frames back towards the starting position.')">Back 50 Frames<span>Alt-Left</span></li>
+                        <li onclick="popup('Forward 50 Frames','Moves 50 frames towards the ending position.')">Forward 50 Frames<span>Alt-Right</span></li>
+                        <hr/>
+                        <li onclick="popup('Go To Frame','This prompts the user for a number indicating the frame to go to in the video, then moves the timeline and previews to that frame.')">To Frame...<span>Ctrl-G</span></li>
+                    </ul></li>
+                    <li onclick="popup('Video','The options in this section are purely functional, used to modify video tracks in various ways. As they are functional only, they do not require an explanation in regards to this interface.')"><label for="videomenu">Video</label><input type="checkbox" class="hidden" onClick="window.setTimeout(function() {menuOpen = true}, 10);" id="videomenu" /><ul>
+                        <li>Add Filter...<span>Ctrl-F</span></li>
+                        <li>Set Frame Rate...<span></span></li>
+                        <li>Color Depth<span></span></li>
+                        <hr/>
+                        <li>Compression Options:<span></span></li>
+                        <li><input type="radio" id="streamType1" name="streamType" value="directStreamCopy" checked /><label for = "streamType1">Direct Stream Copy</label><span></span></li>
+                        <li><input type="radio" id="streamType2" name="streamType" value="fastRecompress" /><label for = "streamType2">Fast Recompress</label><span></span></li>
+                        <li><input type="radio" id="streamType3" name="streamType" value="normalRecompress" /><label for = "streamType3">Normal Recompress</label><span></span></li>
+                        <li><input type="radio" id="streamType4" name="streamType" value="fullRecompress" /><label for = "streamType4">Full Reprocessing</label><span></span></li>
+                        <hr/>
+                        <li><input id="smartRendering" type="checkbox" name="SmartRendering" /><label for="smartRendering">Smart Rendering</label></li>
+                        <li><input id="preserveEmptyFrames" type="checkbox" name="PreserveEmptyFrames" /><label for="preserveEmptyFrames">Preserve Empty Frames</label></li>
+                    </ul></li>
+                    <li onclick="popup('Audio','The options in this section are purely functional, used to modify audio tracks in various ways. As they are functional only, they do not require an explanation in regards to this interface.')"><label for="audiomenu">Audio</label><input type="checkbox" class="hidden" onClick="window.setTimeout(function() {menuOpen = true}, 10);" id="audiomenu" /><ul>
+                        <li>Interleaving...<span>Ctrl-I</span></li>
+                        <li>Compression...<span></span></li>
+                        <hr/>
+                        <li>Use Advanced Filtering<span></span></li>
+                        <li>Filters<span></span></li>
+                        <li>Conversion<span></span></li>
+                        <li>Volume<span></span></li>
+                    </ul></li>
+                    <li><label for="optionsmenu">Options</label><input type="checkbox" class="hidden" onClick="window.setTimeout(function() {menuOpen = true}, 10);" id="optionsmenu" /><ul>
+                        <li onclick="popup('Preferences','This option would open a menu to change settings such as start up behaviour, auto recovery and backup settings, and disk I/O settings like the write mode.')">Preferences...<span></span></li>
+                        <li onclick="popup('Performance','Includes performance-related options such as memory usage and the rendering pipeline.')">Performance...<span></span></li>
+                        <li onclick="popup('Keyboard Shortcuts','Would allow the user to modify the program\'s keyboard shortcuts and set ones more suited to them.')">Keyboard Shortcuts...<span></span></li>
+                    </ul></li>
+                    <li><label for="toolsmenu">Tools</label><input type="checkbox" class="hidden" onClick="window.setTimeout(function() {menuOpen = true}, 10);" id="toolsmenu" /><ul>
+                        <li onclick="popup('External Encoders','Would allow the user to specify which external encoders to load and use.')">External Encoders...<span></span></li>
+                        <li onclick="popup('Plugins','Would allow the user to install, activate, deactivate, and update plugins that extend the editor\'s functionality.')">Plugins...<span></span></li>
+                        <hr/>
+                        <li onclick="popup('Create Test Track','This option will create a temporary track for testing purposes, such as previewing a filter or other editing feature before use.')">Create Test Track...<span></span></li>
+                    </ul></li>
+                    <li><label for="helpmenu">Help</label><input type="checkbox" class="hidden" onClick="window.setTimeout(function() {menuOpen = true}, 10);" id="helpmenu" /><ul>
+                        <li onClick="popup('Basic Help', 'Double-click on a track to make a clip. Right-click on a track to access track options. Click and drag a track into a preview window to preview it.')">Basic Help<span>F1</span></li>
+                        <li onclick="popup('Program Tutorials','Opens up a guidebook to aid users, guiding them on how to make use of various editing features and explaining their functions.')">Program Tutorials<span>F2</span></li>
+                        <li onclick="popup('About','Made by Ryan Amalfitano and Adam Caverhill. &copy; Broccoli University.')">About Video Editor 4000...<span></span></li>
+                    </ul></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <!-- Main content section: previews, status bar, timeline, tracks. -->
+        <main id="main">
+            <section class="previews">
+                <div id="pone"   class="preview" ondragover="allowdrop(event)" ondrop="droppreview(event)" style="display: inline-block;"></div>
+                <div id="ptwo"   class="preview" ondragover="allowdrop(event)" ondrop="droppreview(event)" style="display: inline-block;"></div>
+            </section>
+            
             <section id="statusbar">
-				<button class="start"></button>
-				<button class="rewind"></button>
-				<span></span>
-				<button class="playpause play" onclick="playpause()"></button>
-				<button class="stop" onclick="stopbutton()"></button>
+                <button class="start"></button>
+                <button class="rewind"></button>
+                <span></span>
+                <button class="playpause play" onclick="playpause()"></button>
+                <button class="stop" onclick="stopbutton()"></button>
                 <span></span>
                 <button class="fastforward"></button>
-				<button class="end"></button>
-				
-				<div><label id="frames">Frame:0</label><label id="timer">00:00.00</label></div>
-			</section>
+                <button class="end"></button>
+                
+                <div><label id="frames">Frame:0</label><label id="timer">00:00.00</label></div>
+            </section>
             
-			<section id="timeline">
-				<canvas id="vidtrack1" class="track video" draggable="true" onDblClick="trackclick('vidtrack1', 'vid', event)" ondragstart="dragpreview(event)" oncontextmenu="trackoptions()"></canvas>
-				<canvas id="audtrack1" class="track audio" draggable="true" onDblClick="trackclick('audtrack1', 'aud', event)" ondragstart="dragpreview(event)" oncontextmenu="trackoptions()"></canvas>
-				<canvas id="vidtrack2" class="track video" draggable="true" onDblClick="trackclick('vidtrack2', 'vid', event)" ondragstart="dragpreview(event)" oncontextmenu="trackoptions()"></canvas>
-				<canvas id="audtrack2" class="track audio" draggable="true" onDblClick="trackclick('audtrack2', 'aud', event)" ondragstart="dragpreview(event)" oncontextmenu="trackoptions()"></canvas>
-			</section>
-		</main>
-		
-		<dialog id="dialogBox">
-			<button onclick="popdown();" id="close">X</button>
-			<h1 id="dialogBoxTitle">Dialog Title</h1>
-			<p  id="dialogBoxText">Dialog Text</p>
-			<button onclick="popdown();";>Done</button>
-		</dialog>
-		
-		<!-- #statusbar section. -->
-		<#statusbar>
-			<script src="script.js"></script>
-		</#statusbar>
-	</body>
+            <section id="timeline">
+                <ul><li>00:00</li><li>00:30</li><li>01:00</li><li>01:30</li><li>02:00</li><li>02:30</li><li>03:00</li><li>03:30</li><li class="last">04:00</li></ul>
+                <canvas id="vidtrack1" class="track video" draggable="true" onDblClick="trackclick('vidtrack1', 'vid', event)" ondragstart="dragpreview(event)" oncontextmenu="trackoptionsvid()"></canvas>
+                <canvas id="audtrack1" class="track audio" draggable="true" onDblClick="trackclick('audtrack1', 'aud', event)" ondragstart="dragpreview(event)" oncontextmenu="trackoptionsaud()"></canvas>
+                <canvas id="vidtrack2" class="track video" draggable="true" onDblClick="trackclick('vidtrack2', 'vid', event)" ondragstart="dragpreview(event)" oncontextmenu="trackoptionsvid()"></canvas>
+                <canvas id="audtrack2" class="track audio" draggable="true" onDblClick="trackclick('audtrack2', 'aud', event)" ondragstart="dragpreview(event)" oncontextmenu="trackoptionsaud()"></canvas>
+                <canvas id="newtrack"  class="track new" onclick="popup('Add New Track','Clicking this ever-present dummy track would allow the user to add a new video or audio track, using any of the source files they\'ve imported so far, or by importing a new source file on the spot.')"></canvas>
+            </section>
+        </main>
+        
+        <dialog id="dialogBox">
+            <button onclick="popdown();" id="close">X</button>
+            <h1 id="dialogBoxTitle">Dialog Title</h1>
+            <p  id="dialogBoxText">Dialog Text</p>
+            <button onclick="popdown();";>OK</button>
+        </dialog>
+        
+        <dialog id="trackBoxVid" class="trackBox vidBox">
+            <ul>
+                <li>Filter...<span>Ctrl-F</span></li>
+                <li>Frame Rate...<span></span></li>
+                <li>Color Depth<span></span></li>
+                <li>Compression<span></span></li>
+                <hr/>
+
+                <li><input type="radio" id="streamType1" name="streamType" value="directStreamCopy" checked><label for = "streamType1">Direct Stream Copy</label><span></span></li>
+                <li><input type="radio" id="streamType2" name="streamType" value="fastRecompress"><label for = "streamType2">Fast Recompress</label><span></span></li>
+                <li><input type="radio" id="streamType3" name="streamType" value="normalRecompress"><label for = "streamType3">Normal Recompress</label><span></span></li>
+                <li><input type="radio" id="streamType4" name="streamType" value="fullRecompress"><label for = "streamType4">Full Reprocessing</label><span></span></li>
+                <hr/>
+                <li><input id="smartRendering" type="checkbox" name="SmartRendering"><label for="smartRendering">Smart Rendering</label></li>
+                <li><input id="preserveEmptyFrames" type="checkbox" name="PreserveEmptyFrames"><label for="preserveEmptyFrames">Preserve Empty Frames</label></li>
+            </ul>
+        </dialog>
+        
+        <dialog id="trackBoxAud" class="trackBox audBox">
+            <ul>
+                <li>Interleaving...<span>Ctrl-I</span></li>
+                <li>Compression...<span></span></li>
+                <hr/>
+                <li>Use Advanced Filtering<span></span></li>
+                <li>Filters<span></span></li>
+                <li>Conversion<span></span></li>
+                <li>Volume<span></span></li>
+            </ul>
+        </dialog>
+        
+    <!--<dialog id="mediaBrowser">
+            <button onclick="mediabrowserdown();" id="close">X</button>
+            <h1>Media Browser</h1>
+            <div>Browse some media.</div>
+            <button onclick="mediabrowserdown();";>Done</button>
+        </dialog>-->
+        
+        <!-- Status bar section. -->
+        <statusbar>
+            <script src="script.js"></script>
+        </statusbar>
+    </body>
 </html>

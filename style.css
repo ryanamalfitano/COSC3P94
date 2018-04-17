@@ -1,54 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Gugi|Ubuntu');
+
 html, body {
-	width: 100%;
-	height: 100%;
-	
-	margin: 0;
-	padding: 0;
+    width: 100%;
+    height: 100%;
+    
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: rgb(200, 200, 200);
+    
+    font-family: 'Ubuntu', sans-serif;
 }
 
 header {
-	width: 100%;
-	height: 5%;
-	padding: 1% 0;
+    width: 100%;
+    height: 4%;
+    
+    padding: 1% 0;
+    background: rgb(255, 255, 255);
 }
 
 header nav {
-	
+    
 }
 
 header nav > ul {
-	margin: 0;
-	padding: 5px 40px;
-	
-	z-index: 995;
+    margin: 0;
+    padding: 5px 40px;
+    
+    z-index: 995;
 }
 
 header nav > ul > li {
-	position: relative;
-	display: inline-block;
-	width: 65px;
+    position: relative;
+    display: inline-block;
+    margin: 0px 20px;
 }
 
 header nav > ul > li ul {
-	display: none;
-	position: absolute;
-	top: 17px;
-	left: 0px;
-	
-	width: 200px;
-	padding: 5px;
-	
-	background: #FFF;
-	border: 1px solid #222;
-	
-	z-index: 999;
+    display: none;
+    position: absolute;
+    top: 17px;
+    left: 0px;
+    
+    width: 200px;
+    padding: 5px;
+    
+    background: #FFF;
+    border: 1px solid #222;
+    
+    z-index: 999;
 }
 
-header nav > ul li:hover > ul { display: block; }
+header nav > ul li > input.hidden { display: none; }
+
+header nav > ul li input:checked ~ ul { display: block; }
 
 header nav > ul > li ul > li {
-	position: relative;
-	list-style: none;
+    position: relative;
+    list-style: none;
 }
 
 header nav > ul > li ul > li ul {
@@ -57,116 +69,96 @@ header nav > ul > li ul > li ul {
 }
 
 header nav > ul > li ul > li > span {
-	display: inline-block;
-	position: absolute;
-	right: 5px;
+    display: inline-block;
+    position: absolute;
+    right: 5px;
 }
 
 main {
-	width: 100%;
-	height: 90%;
-	
-	margin: 0;
-	padding: 0;
+    width: 100%;
+    height: 92%;
+    
+    margin: 0;
+    padding: 0;
 }
 
 .previews {
-	width: 100%;
-	height: 50%;
-	
-	margin-bottom: 2%;
-	
-	text-align: center;
-	font-size: 0;
+    width: 100%;
+    height: 50%;
+    
+    padding-bottom: 2%;
+    
+    text-align: center;
+    font-size: 0;
+    
+    background: rgb(255, 255, 255);
 }
 
 .previews .preview {
-	position: relative;
-	display: inline-block;
-	
-	width: 32%;
-	height: 100%;
-	
-	background: url(images/preview1.png) center center no-repeat;
-	background-size: cover;
-	
-	border: 3px solid #222;
+    position: relative;
+    display: inline-block;
+    
+    width: 32%;
+    height: 100%;
+    
+    background: url(images/preview.png) center center no-repeat;
+    background-size: cover;
+    
+    box-shadow: 0px 0px 5px 2px #222;
 }
 
 .previews .preview:after {
-	content: "P";
-	
-	position: absolute;
-    top: 7px;
-    right: 7px;
-	
+    content: "P";
+    
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    
     display: block;
-    height: 20px;
-    width: 20px;
-	
-    font-size: 18px;
-    background: #CCC;
-	
-	box-shadow: 0px 0px 0px 2px #000;
+    height: 30px;
+    width: 30px;
+    
+    font-size: 26px;
+    background: #FFF;
+    
+    border: 2px solid #222;
     z-index: 990;
 }
 
 .previews .preview + .preview {
-	margin-left: -3px;
+    margin-left: 20px;
 }
-
-.previews .preview#pone   { background-image: url(images/preview1.png); }
-.previews .preview#ptwo   { background-image: url(images/preview2.jpg); }
-.previews .preview#pthree { background-image: url(images/preview3.jpg); }
 
 .previews .preview#pone:after   { content:"1"; }
 .previews .preview#ptwo:after   { content:"2"; }
-.previews .preview#pthree:after { content:"3"; }
 
 .previews .preview.vidtrack1 { background-image: url(images/vidtrack1.jpg) !important; }
 .previews .preview.vidtrack2 { background-image: url(images/vidtrack2.jpg) !important; }
 .previews .preview.audtrack1 { background-image: url(images/audtrack1.png) !important; }
 .previews .preview.audtrack2 { background-image: url(images/audtrack2.png) !important; }
 
-#timeline {
-	width: 90%;
-	height: 30%;
-	
-	margin: 0 auto 2%;
-	padding: 0;
-	
-	background: #555555;
-}
-
-#timeline .track {
-	width: 98%;
-	height: 26%;
-	
-	padding: 0 1%;
-	
-	font-family: monospace;
-	background: #DDDDDD;
-}
-
-#timeline .track.video { box-shadow: 0px 0px 5px 3px #FF0000 inset; }
-#timeline .track.audio { box-shadow: 0px 0px 5px 3px #0066FF inset; }
-
 #statusbar {
-	width: 98%;
-	height: 7%;
-	padding: 5px 1% 0;
-	
+    position: relative;
+    width: 98%;
+    height: 7%;
+        min-height: 50px;
+    padding: 5px 1% 0;
+    
     text-align: center;
-	border-top: 2px #AAA;
-	box-shadow: 0px -3px 5px #999;
+    border-top: 2px #AAA;
+    box-shadow: 0px 0px 5px 2px #222;
 }
 
 #statusbar button {
-	width: 30px;
-	height: 30px;
-	
-	background: url(images/play.png) center center no-repeat;
-	background-size: cover;
+    width: 40px;
+    height: 40px;
+    
+    background: url(images/play.png) #FFF center center no-repeat;
+    background-size: 80%;
+    
+    border: 1px solid #222;
+    
+    vertical-align: middle;
 }
 
 #statusbar button.play        { background-image: url(images/play.png); }
@@ -183,45 +175,195 @@ main {
     margin-left: 40px;
     padding: 2px 20px;
     
-    background: #EEE;
-    border: 1px solid #999;
+    background: #FFF;
+    border: 1px solid #222;
     color: #555;
     
-    vertical-align: super;
+    vertical-align: middle;
 }
 
 #statusbar div label + label {
     margin-left: 50px;
 }
 
+#statusbar div.tutorial {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    
+    background: none;
+    border: none;
+    color: #000;
+}
+
+#timeline {
+    position: relative;
+    width: 90%;
+    height: 38%;
+    
+    padding: 0 5%;
+    background: rgb(200, 200, 200);
+    
+    overflow-y: scroll;
+    overflow-x: hidden;
+    
+    z-index: 5;
+}
+
+#timeline ul {
+    position: fixed;
+    width: 100%;
+    width: calc(90% - 15px);
+    height: 5%;
+        min-height: 40px;
+    
+    margin: 0;
+    padding: 0;
+    background: rgb(200, 200, 200);
+    border-bottom: 1px solid #222;
+}
+
+#timeline ul li {
+    position: relative;
+    display: inline-block;
+    margin: 0px 0px 0px -20px;
+    margin-right: calc(7% - 40px);
+    
+    list-style: none;
+}
+
+#timeline ul li + li { margin-left: calc(7% - 40px); }
+#timeline ul li.last { margin-right: 0; }
+
+#timeline ul li:after {
+    content: "|";
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    
+    width: 1px;
+    height: 18px;
+}
+
+#timeline .track {
+    width: 98%;
+    height: 22%;
+    
+    margin: 3% 0px 2px;
+    padding: 0 1%;
+    
+    font-family: monospace;
+    background: #DDDDDD;
+    border: 1px solid #222;
+}
+
+#timeline .track + .track { margin-top: 2px;}
+
+#timeline .track.video { background: linear-gradient(rgb(255, 125, 125), rgb(200,  75,  75)); }
+#timeline .track.audio { background: linear-gradient(rgb(150, 150, 255), rgb(100, 100, 200)); }
+#timeline .track.new   { background: linear-gradient(rgb(200, 200, 200), rgb(150, 150, 150)); }
+
+.trackBox {
+    position: absolute;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    
+    display: none;
+    width: 200px;
+    
+    padding: 5px;
+    background: #FFF;
+    border: 1px solid #222;
+    border-color: #000;
+    
+    transition: border-color 0.1s;
+    z-index: 1000;
+}
+
+.trackBox > ul {
+    margin: 0;
+    padding: 0;
+}
+
+.trackBox > ul > li {
+    position: relative;
+    list-style: none;
+}
+
+.trackBox > ul > li span {
+    display: inline-block;
+    position: absolute;
+    right: 5px;
+}
+
+.trackBox.vidBox { height: 230px; }
+.trackBox.audBox { height: 130px; }
+
 #dialogBox {
-	display: none;
-	position: absolute;
-	top: 50%;
-		margin-top: -75px;
-	left: 50%;
-		margin-left: -150px;
-	
-	width: 300px;
-	height: 150px;
-	
-	text-align: center;
+    display: none;
+    position: absolute;
+    top: 50%;
+        margin-top: -85px;
+    left: 50%;
+        margin-left: -150px;
+    
+    width: 300px;
+    height: 175px;
+    
+    text-align: center;
+    z-index: 999;
 }
 
 #dialogBox h1 {
-	margin: 0px 0px 5px;
+    margin: 0px 0px 5px;
 }
 
 #dialogBox p {
-	margin: 0px 0px 10px;
+    margin: 0px 0px 10px;
 }
 
 #dialogBox button {
-	
+    
 }
 
 #dialogBox button#close {
-	position: absolute;
-	top: 5px;
-	right: 5px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+#mediaBrowser {
+    display: none;
+    position: absolute;
+    top: 50%;
+        margin-top: -150px;
+    left: 50%;
+        margin-left: -300px;
+    
+    width: 600px;
+    height: 300px;
+    
+    text-align: left;
+    z-index: 999;
+}
+
+#mediaBrowser h1 {
+    
+    margin: 0px 0px 5px;
+}
+
+#mediaBrowser p {
+    margin: 0px 0px 10px;
+}
+
+#mediaBrowser button {
+    
+}
+
+#mediaBrowser button#close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }
